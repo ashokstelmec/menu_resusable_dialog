@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect  } from "react";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 
-const Dialog = ({ open, onCloseModal, singleTask }) => {
-  const [task, setTask] = useState([]);
+const Dialog = ({ open, onCloseModal, content: Content }) => {
+  const [task, setTask] = useState({content: null});
 
   useEffect(() => {
-    setTask(singleTask);
-  }, [singleTask]);
+    setTask({content: Content && <Content />});
+  }, [Content]);
+  console.log("Task", task);
 
   return (
     <Modal
@@ -18,9 +19,7 @@ const Dialog = ({ open, onCloseModal, singleTask }) => {
       }}
       center
     >
-      <h1>{task.title}</h1>
-      <h2>{task.about}</h2>
-      <p>{task.description}</p>
+      {task.content}
     </Modal>
   );
 };

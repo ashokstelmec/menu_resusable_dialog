@@ -2,34 +2,26 @@ import "./App.css";
 import React, { useState } from "react";
 import Dialog from "./components/Dialog";
 import SingleItem from "./components/SingleItem";
+import Home from "./components/dialogContent/Home";
+import About from "./components/dialogContent/About";
+import Help from "./components/dialogContent/Help";
+import Services from "./components/dialogContent/Services";
 
 function App() {
   const [open, setOpen] = useState(false);
-  const [task, setTask] = useState([]);
+  const [task, setTask] = useState({});
   const items = [
     {
-      title: "Home",
-      about: "You have reached home.",
-      description:
-        "Home is the Best places to live and rest in the entire world. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.",
+      content: Home,
     },
     {
-      title: "About",
-      about: "What is this About?",
-      description:
-        "About is to tell any individual about its existence. Anyone can explain anything.",
+      content: About,
     },
     {
-      title: "Help",
-      about: "Why do I need Help?",
-      description:
-        "I need help because i have to grow in life and learn in life the things that i never knew and I need a lots of money also.",
+      content: Help,
     },
     {
-      title: "Services",
-      about: "What services do I provide!",
-      description:
-        "I provide web designing and web development services. I also provide personalize coaching services.",
+      content: Services,
     },
   ];
 
@@ -49,7 +41,7 @@ function App() {
         ))}
       </ul>
 
-      <Dialog open={open} onCloseModal={onCloseModal} singleTask={task} />
+      <Dialog open={open} onCloseModal={onCloseModal} content={task} />
     </div>
   );
 }
